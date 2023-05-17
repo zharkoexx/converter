@@ -1,0 +1,236 @@
+import telebot
+
+from telebot import types
+ 
+bot = telebot.TeleBot('5740101192:AAGGL-N0LedTEofPZMLFiA_UEyx9GaITc4s')
+Tenge1=0.0022 #dollar
+Tenge2=0.0020 #euro
+Tenge3=0.16 #ruble
+Dollar1=463.58 #tenge
+Dollar2=0.93 #euro
+Dollar3=74.00 #ruble
+Euro1=492.07 #tenge
+Euro2=1.07 #dollar
+Euro3=78.72 #ruble
+Ruble1=6.25 #tenge
+Ruble2=0.014 #dollar
+Ruble3=0.013 #euro
+
+@bot.message_handler(commands=['start'])
+def welcome(message):
+
+    # keyboard
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    item1 = types.KeyboardButton("Tenge ₸")
+    item2 = types.KeyboardButton("Dollar $")
+    item3 = types.KeyboardButton("Euro €")
+    item4 = types.KeyboardButton("Ruble ₽")
+ 
+    markup.add(item1, item2, item3, item4)
+ 
+    bot.send_message(message.chat.id, "Сәлем {0.first_name}!\nМен - <b>{1.first_name}</b>, Мен валюта айырбастаушымын. Мені жүргізіп көріңіз. Сіз қандай валютаны айырбастағыңыз келеді? ".format(message.from_user, bot.get_me()),
+        parse_mode='html', reply_markup=markup)
+
+#1111
+@bot.message_handler(content_types=['text'])
+def lalala(message):
+    if message.chat.type == 'private':
+
+        if message.text == 'Tenge ₸':
+            bot.send_message(message.chat.id, str("және қандай валютаға?"))
+            markup = types.InlineKeyboardMarkup(row_width=3)
+            item1 = types.InlineKeyboardButton("Dollar $")
+            item2 = types.InlineKeyboardButton("Euro €")
+            item3 = types.InlineKeyboardButton("Ruble ₽")
+
+            markup.add(item1, item2, item3)
+            bot.register_next_step_handler(message, currencyT)
+
+        if message.text == 'Dollar $':
+            bot.send_message(message.chat.id, str("және қандай валютаға?"))
+            markup = types.InlineKeyboardMarkup(row_width=3)
+            item1 = types.InlineKeyboardButton("Tenge ₸")
+            item2 = types.InlineKeyboardButton("Euro €")
+            item3 = types.InlineKeyboardButton("Ruble ₽")
+
+            markup.add(item1, item2, item3)
+            bot.register_next_step_handler(message, currencyD)
+
+        if message.text == 'Euro €':
+            bot.send_message(message.chat.id, str("және қандай валютаға?"))
+            markup = types.InlineKeyboardMarkup(row_width=3)
+            item1 = types.InlineKeyboardButton("Tenge ₸")
+            item2 = types.InlineKeyboardButton("Dollar $")
+            item3 = types.InlineKeyboardButton("Ruble ₽")
+
+            markup.add(item1, item2, item3)
+            bot.register_next_step_handler(message, currencyE)
+
+        if message.text == 'Ruble ₽':
+            bot.send_message(message.chat.id, str("және қандай валютаға?"))
+            markup = types.InlineKeyboardMarkup(row_width=3)
+            item1 = types.InlineKeyboardButton("Tenge ₸")
+            item2 = types.InlineKeyboardButton("Dollar $")
+            item3 = types.InlineKeyboardButton("Euro €")
+
+            markup.add(item1, item2, item3)
+            bot.register_next_step_handler(message, currencyR)
+
+
+@bot.message_handler(content_types=['text'])
+def currencyT(message):
+    if message.text == 'Dollar $':
+        msg=bot.send_message(message.chat.id, 'суммасын жазыңыз, pls')
+        bot.register_next_step_handler(msg, dollar11 "%.2f" %)
+    elif message.text == 'Euro €':
+         msg=bot.send_message(message.chat.id, 'суммасын жазыңыз, pls')
+         bot.register_next_step_handler(msg, euro11 "%.2f" %)
+    elif message.text == 'Ruble ₽':
+        msg=bot.send_message(message.chat.id, 'суммасын жазыңыз, pls')
+        bot.register_next_step_handler(msg, ruble11 "%.2f" %)
+
+@bot.message_handler(content_types=['text'])
+def currencyD(message):
+    if message.text == 'Tenge ₸':
+        msg=bot.send_message(message.chat.id, 'суммасын жазыңыз, pls')
+        bot.register_next_step_handler(msg, tenge22)
+    elif message.text == 'Euro €':
+         msg=bot.send_message(message.chat.id, 'суммасын жазыңыз, pls')
+         bot.register_next_step_handler(msg, euro22)
+    elif message.text == 'Ruble ₽':
+        msg=bot.send_message(message.chat.id, 'суммасын жазыңыз, pls')
+        bot.register_next_step_handler(msg, ruble22)
+
+@bot.message_handler(content_types=['text'])
+def currencyE(message):
+    if message.text == 'Tenge ₸':
+        msg=bot.send_message(message.chat.id, 'суммасын жазыңыз, pls')
+        bot.register_next_step_handler(msg, tenge33)
+    elif message.text == 'Dollar $':
+         msg=bot.send_message(message.chat.id, 'суммасын жазыңыз, pls')
+         bot.register_next_step_handler(msg, dollar33)
+    elif message.text == 'Ruble ₽':
+        msg=bot.send_message(message.chat.id, 'суммасын жазыңыз, pls')
+        bot.register_next_step_handler(msg, ruble33)
+
+@bot.message_handler(content_types=['text'])
+def currencyR(message):
+    if message.text == 'Tenge ₸':
+        msg=bot.send_message(message.chat.id, 'суммасын жазыңыз, pls')
+        bot.register_next_step_handler(msg, tenge44)
+    elif message.text == 'Dollar $':
+         msg=bot.send_message(message.chat.id, 'суммасын жазыңыз, pls')
+         bot.register_next_step_handler(msg, dollar44)
+    elif message.text == 'Euro €':
+        msg=bot.send_message(message.chat.id, 'суммасын жазыңыз, pls')
+        bot.register_next_step_handler(msg, euro44)
+
+
+@bot.callback_query_handler(func=lambda tenge: True)
+def tenge(message):
+    a=float(message.text) / Tenge1
+    try:
+            bot.send_message(message.chat.id, "%.2f" % a)
+            bot.send_message(message.chat.id, 'KZT')
+    except ValueError:
+        bot.send_message(message.chat.id, 'суммасын жазыңыз, pls')
+        
+@bot.callback_query_handler(func=lambda dollar: True)
+def dollar11(message):
+    try:
+            bot.send_message(message.chat.id, float(message.text) / Dollar1)
+            bot.send_message(message.chat.id, 'USD')
+    except ValueError:
+        bot.send_message(message.chat.id, 'суммасын жазыңыз, pls')
+
+@bot.callback_query_handler(func=lambda euro: True)
+def euro11(message):
+    try:
+            bot.send_message(message.chat.id, float(message.text)/ Euro1)
+            bot.send_message(message.chat.id, 'EUR')
+    except ValueError:
+        bot.send_message(message.chat.id, 'суммасын жазыңыз')
+
+@bot.callback_query_handler(func=lambda ruble: True)
+def ruble11(message):
+    try:
+            bot.send_message(message.chat.id, float(message.text)/ Ruble1)
+            bot.send_message(message.chat.id, 'RUB')
+    except ValueError:
+        bot.send_message(message.chat.id, 'суммасын жазыңыз')
+
+@bot.callback_query_handler(func=lambda tenge: True)
+def tenge22(message):
+    try:
+            bot.send_message(message.chat.id, float(message.text) / Tenge1)
+            bot.send_message(message.chat.id, 'KZT')
+    except ValueError:
+        bot.send_message(message.chat.id, 'write the amount')
+
+@bot.callback_query_handler(func=lambda euro: True)
+def euro22(message):
+    try:
+            bot.send_message(message.chat.id, float(message.text)/ Euro2)
+            bot.send_message(message.chat.id, 'EUR')
+    except ValueError:
+        bot.send_message(message.chat.id, 'write the amount')
+
+@bot.callback_query_handler(func=lambda ruble: True)
+def ruble22(message):
+    try:
+            bot.send_message(message.chat.id, float(message.text)/ Ruble2)
+            bot.send_message(message.chat.id, 'RUB')
+    except ValueError:
+        bot.send_message(message.chat.id, 'write the amount')
+
+@bot.callback_query_handler(func=lambda tenge: True)
+def tenge33(message):
+    try:
+            bot.send_message(message.chat.id, float(message.text) / Tenge2)
+            bot.send_message(message.chat.id, 'KZT')
+    except ValueError:
+        bot.send_message(message.chat.id, 'write the amount')
+
+@bot.callback_query_handler(func=lambda euro: True)
+def dollar33(message):
+    try:
+            bot.send_message(message.chat.id, float(message.text)/ Dollar2)
+            bot.send_message(message.chat.id, 'USD')
+    except ValueError:
+        bot.send_message(message.chat.id, 'write the amount')
+
+@bot.callback_query_handler(func=lambda ruble: True)
+def ruble33(message):
+    try:
+            bot.send_message(message.chat.id, float(message.text)/ Ruble3)
+            bot.send_message(message.chat.id, 'RUB')
+    except ValueError:
+        bot.send_message(message.chat.id, 'write the amount')
+
+@bot.callback_query_handler(func=lambda tenge: True)
+def tenge44(message):
+    try:
+            bot.send_message(message.chat.id, float(message.text) / Tenge3)
+            bot.send_message(message.chat.id, 'KZT')
+    except ValueError:
+        bot.send_message(message.chat.id, 'write the amount')
+
+@bot.callback_query_handler(func=lambda euro: True)
+def euro44(message):
+    try:
+            bot.send_message(message.chat.id, float(message.text)/ Dollar3)
+            bot.send_message(message.chat.id, 'USD')
+    except ValueError:
+        bot.send_message(message.chat.id, 'write the amount')
+
+@bot.callback_query_handler(func=lambda ruble: True)
+def dollar44(message):
+    try:
+            bot.send_message(message.chat.id, float(message.text)/ Euro3)
+            bot.send_message(message.chat.id, 'EUR')
+    except ValueError:
+        bot.send_message(message.chat.id, 'write the amount')
+
+
+# RUN
+bot.polling(none_stop=True)
